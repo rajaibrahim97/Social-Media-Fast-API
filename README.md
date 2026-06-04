@@ -62,3 +62,35 @@ SocialAPI handles requests using a decoupled tier-based structure, passing clear
 |           (PostgreSQL Server / Normalized Tables)          |
 +------------------------------------------------------------+
 ```
+## Installation
+
+### Generate the virtual environment container
+python -m venv venv
+
+### Activate the environment context (Windows Bash)
+source venv/Scripts/activate
+
+### Install all package matrices
+pip install -r requirements.txt
+
+## Environment Configuration 
+DATABASE_HOSTNAME=localhost
+DATABASE_PORT=5432
+DATABASE_PASSWORD=your_secure_postgres_password
+DATABASE_NAME=social_api_db
+DATABASE_USERNAME=postgres
+SECRET_KEY=your_cryptographically_secure_jwt_signing_key_string
+ALGORITHM=HS256
+ACCESS_TOKEN_EXPIRE_MINUTES=30
+
+### Scehma Migration
+alembic upgrade head
+
+## Running Locally 
+uvicorn app.main:app --reload
+
+## Testing 
+
+#### Run the test runner suite
+pytest -v -s
+
